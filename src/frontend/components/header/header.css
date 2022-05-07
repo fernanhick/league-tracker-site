@@ -1,0 +1,11 @@
+#header {
+    font-size: large;
+}
+#heroSection {
+    height: 10rem;
+    background-color: blueviolet;
+    box-shadow: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
