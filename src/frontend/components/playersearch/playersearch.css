@@ -1,31 +1,41 @@
 .player-search-container {
-    background-color: rgb(128, 231, 31);
+    background-color: rgb(255, 255, 255);
     border-radius: 1rem;
-    /*     padding: 1rem;
+    padding: 1rem;
+    /*     border-style: solid;
  */
-    box-shadow: 10px 6px 1px 4px rgb(96, 199, 0),
-        inset 3px 3px 1px rgb(143, 252, 0);
+    border-width: 0.1rem;
+    box-shadow: 0px 0px 15px 10px rgb(233, 233, 233);
     display: flex;
     align-items: center;
 }
 #searchControlForm {
     display: flex;
 }
-#resultsArea {
-    background-color: rgb(186, 255, 121);
+#fullResult {
     display: flex;
-    height: 20rem;
-    margin: 1rem 0 1rem 1rem;
-    box-shadow: inset 10px 10px 10px rgb(54, 112, 0);
+}
+#summData {
+    text-align: left;
+}
+#summIconImg {
+    width: 100px;
+    border-radius: 10px;
+}
+#resultsArea {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    min-height: 10rem;
 
+    margin-left: 1rem;
+    box-shadow: inset 0px 0px 15px 10px rgb(233, 233, 233);
+    padding: 2rem;
     width: 100%;
     border-radius: 0.5rem;
-    padding: 2rem;
 }
 #hero-section {
-    background-color: rgb(128, 231, 31);
+    background-color: rgb(255, 255, 255);
     padding: 2rem;
-    box-shadow: 0px 10px 10px rgb(54, 112, 0);
 }
 #btnSearch {
     width: 100%;

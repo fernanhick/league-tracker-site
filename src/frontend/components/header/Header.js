@@ -6,8 +6,8 @@ const Header = () => {
             <div id="header">
                 <h1>Welcome to League of Legends Fan Tracker</h1>
                 <p>
-                    Here you will be able to find players based on their name
-                    and some stats
+                    Here you will be able to find players information based on
+                    their name
                 </p>
             </div>
         </section>
