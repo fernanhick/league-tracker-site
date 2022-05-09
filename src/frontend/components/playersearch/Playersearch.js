@@ -20,6 +20,8 @@ const Playersearch = () => {
     const [userDetailedData, setUserDetailedData] = useState(null);
     const [region, setRegion] = useState("Select Region");
     const [matchHistory, setMatchHistory] = useState(null);
+    const [matches, setMatches] = useState(null);
+    const [loadingMatches, setLoadingMatches] = useState(true);
 
     const regions = [
         { label: "Brazil", value: "br1" },
@@ -72,12 +74,40 @@ const Playersearch = () => {
 
     if (region === "jp1" || region === "kr") continent = "ASIA";
 
-    const setDetailedDataQuery = (event) => {
+    const populateMatches = async (res) => {
+        setLoadingMatches(true);
+        let matchDetails = [];
+        let uri = "";
+        for (let i = 0; i < res.length; i++) {
+            uri = `https://${continent}.api.riotgames.com/lol/match/v5/matches/${res[i]}?api_key=${process.env.REACT_APP_RIOT_API_KEY}`;
+            await axios
+                .get(uri)
+                .then(function (res) {
+                    matchDetails.push(res.data);for (let i = 0; i < res.data.metadata.participants.length; i++) {
+            const e = res.data.metadata.participants[i];
+            if (e === userData.puuid) {
+                console.log(i);
+            }
+        }
+                })
+                .catch(function (err) {
+                    console.log(err);
+                });
+        }
+
+        setMatches(matchDetails);
+
+        
+        setLoadingMatches(false);
+        console.log(matches);
+    };
+
+    const setDetailedDataQuery = async (event) => {
         let summonerD1 = `https://${region}.api.riotgames.com/lol/league/v4/entries/by-summoner/${userData.id}?api_key=${process.env.REACT_APP_RIOT_API_KEY}`;
 
-        let summonerDMatches = `https://${continent}.api.riotgames.com/lol/match/v5/matches/by-puuid/${userData.puuid}/ids?start=0&count=10&api_key=${process.env.REACT_APP_RIOT_API_KEY}`;
+        let summonerDMatches = `https://${continent}.api.riotgames.com/lol/match/v5/matches/by-puuid/${userData.puuid}/ids?start=0&count=5&api_key=${process.env.REACT_APP_RIOT_API_KEY}`;
 
-        axios
+        await axios
             .get(summonerD1)
             .then(function (response) {
                 setUserDetailedData(response.data);
@@ -87,11 +117,11 @@ const Playersearch = () => {
             .catch(function (err) {
                 console.log(err);
             });
-        axios
+        await axios
             .get(summonerDMatches)
             .then(function (response) {
                 setMatchHistory(response.data);
-                console.log(matchHistory);
+                populateMatches(response.data);
             })
             .catch(function (err) {
                 console.log(err);
@@ -104,13 +134,15 @@ const Playersearch = () => {
                 <Form id="searchForm">
                     <InputGroup>
                         <select onChange={handleRegionChange}>
-                            <option value="Select a Region">{region}</option>
+                            <option value="Select a Region">
+                                Select a Region
+                            </option>
                             {/* Mapping through each region object in our regions array
                         and returning an option element with the appropriate attributes / values.
                        */}
-                            {regions.map((region) => (
-                                <option key={region.label} value={region.value}>
-                                    {region.label}
+                            {regions.map((reg) => (
+                                <option key={reg.label} value={reg.value}>
+                                    {reg.label}
                                 </option>
                             ))}
                         </select>
@@ -172,17 +204,27 @@ const Playersearch = () => {
             ) : (
                 <></>
             )}
-            <Container className="detailsContainer">
-                {matchHistory && matchHistory.length > 0 ? (
+            {loadingMatches ? (
+                <></>
+            ) : (
+                <Container className="detailsContainer">
+                    {matches.info}
                     <Container id="mDetails">
-                        {matchHistory.map((match) => (
-                            <Card key={match} style={{ width: "18rem" }}>
+                        {matches.map((match) => (
+                            <Card
+                                key={match.info.gameId}
+                                style={{ width: "18rem" }}
+                            >
                                 <Card.Img
                                     variant="top"
                                     src="holder.js/100px180"
                                 />
                                 <Card.Body>
-                                    <Card.Title>{match}</Card.Title>
+                                    <Card.Title>
+                                        {match.info.teams[0].win === true
+                                            ? "Victory"
+                                            : "Defeat"}
+                                    </Card.Title>
                                     <Card.Text>
                                         Some quick example text to build on the
                                         card title and make up the bulk of the
@@ -195,10 +237,8 @@ const Playersearch = () => {
                             </Card>
                         ))}
                     </Container>
-                ) : (
-                    <></>
-                )}
-            </Container>{" "}
+                </Container>
+            )}
         </section>
     );
 };
