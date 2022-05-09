@@ -3,10 +3,13 @@ import {
     Container,
     Button,
     InputGroup,
-    FormControl,
     Form,
     DropdownButton,
     Dropdown,
+    ButtonGroup,
+    Row,
+    Col,
+    Card,
 } from "react-bootstrap";
 import "./playersearch.css";
 import axios from "axios";
@@ -16,6 +19,7 @@ const Playersearch = () => {
     const [userData, setUserData] = useState(null);
     const [userDetailedData, setUserDetailedData] = useState(null);
     const [region, setRegion] = useState("Select Region");
+    const [matchHistory, setMatchHistory] = useState(null);
 
     const regions = [
         { label: "Brazil", value: "br1" },
@@ -26,7 +30,7 @@ const Playersearch = () => {
         { label: "LatinAmerica1", value: "la1" },
         { label: "LatinAmerica2", value: "la2" },
         { label: "NorthAmerica", value: "na1" },
-        { label: "Oeania", value: "oc1" },
+        { label: "Oceania", value: "oc1" },
         { label: "Turkey", value: "tr1" },
         { label: "Russia", value: "ru" },
     ];
@@ -42,22 +46,52 @@ const Playersearch = () => {
             .get(apiString)
             .then(function (response) {
                 setUserData(response.data);
-                console.log(response);
             })
             .catch(function (err) {
                 console.log(err);
                 setUserData(null);
             });
-        setPlayerSearched("");
     };
+    let continent;
+
+    if (
+        region === "br1" ||
+        region === "la1" ||
+        region === "na1" ||
+        region === "la2"
+    )
+        continent = "AMERICAS";
+    if (
+        region === "eun1" ||
+        region === "euw1" ||
+        region === "oc1" ||
+        region === "tr1" ||
+        region === "ru"
+    )
+        continent = "EUROPE";
+
+    if (region === "jp1" || region === "kr") continent = "ASIA";
 
     const setDetailedDataQuery = (event) => {
-        let summStrinApi = `https://${region}.api.riotgames.com/lol/league/v4/entries/by-summoner/${userData.id}?api_key=${process.env.REACT_APP_RIOT_API_KEY}`;
+        let summonerD1 = `https://${region}.api.riotgames.com/lol/league/v4/entries/by-summoner/${userData.id}?api_key=${process.env.REACT_APP_RIOT_API_KEY}`;
+
+        let summonerDMatches = `https://${continent}.api.riotgames.com/lol/match/v5/matches/by-puuid/${userData.puuid}/ids?start=0&count=10&api_key=${process.env.REACT_APP_RIOT_API_KEY}`;
+
         axios
-            .get(summStrinApi)
+            .get(summonerD1)
             .then(function (response) {
                 setUserDetailedData(response.data);
-                console.log(userDetailedData);
+                console.log(response.data);
+                //BUG First click doesnt get data
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
+        axios
+            .get(summonerDMatches)
+            .then(function (response) {
+                setMatchHistory(response.data);
+                console.log(matchHistory);
             })
             .catch(function (err) {
                 console.log(err);
@@ -66,16 +100,11 @@ const Playersearch = () => {
 
     return (
         <section id="hero-section">
-            <Container>
-                This is the are for searching players and get details
-            </Container>
-            <Container className="player-search-container">
+            <Container className="detailsContainer">
                 <Form id="searchForm">
                     <InputGroup>
                         <select onChange={handleRegionChange}>
-                            <option value="Select a Region">
-                                Select a Region
-                            </option>
+                            <option value="Select a Region">{region}</option>
                             {/* Mapping through each region object in our regions array
                         and returning an option element with the appropriate attributes / values.
                        */}
@@ -92,7 +121,7 @@ const Playersearch = () => {
                         placeholder="Username"
                         aria-describedby="searchHelpBlock"
                         onChange={(e) => setPlayerSearched(e.target.value)}
-                    />
+                    ></Form.Control>
                     <Button id="btnSearch" onClick={(e) => searchForPlayer(e)}>
                         Search
                     </Button>
@@ -100,23 +129,25 @@ const Playersearch = () => {
                         Please input the username of the player for searching.
                     </Form.Text>
                 </Form>
-                <section id="resultsArea">
+                <Container className="resultsArea">
                     {userData ? (
                         <div id="fullResult">
                             <div id="summData">
                                 <div>Name: {userData.name}</div>
                                 <div>PUUID: {userData.puuid}</div>
                                 <div>Level: {userData.summonerLevel}</div>
+                                <div id="summIcon">
+                                    <img
+                                        alt="Summoner Icon"
+                                        id="summIconImg"
+                                        src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/profileicon/${userData.profileIconId}.png`}
+                                    />
+                                </div>
                             </div>
-                            <div id="summIcon">
-                                <img
-                                    id="summIconImg"
-                                    src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/profileicon/${userData.profileIconId}.png`}
-                                />
-                            </div>
+
                             <Button
                                 id="btnDetails"
-                                onClick={(e) =>
+                                onClick={() =>
                                     setDetailedDataQuery(userData.id)
                                 }
                             >
@@ -126,13 +157,48 @@ const Playersearch = () => {
                     ) : (
                         <div id="emptyResult">No user have been found</div>
                     )}
-                </section>
+                </Container>
             </Container>
-            {userData ? (
-                <Container id="mDetails">More Details</Container>
+            {userDetailedData && userDetailedData.length > 0 ? (
+                <Container className="detailsContainer">
+                    <div className="resultsDetailsArea">
+                        <Col id="mainDetails">
+                            <Row>Name: {userDetailedData[0].summonerName}</Row>
+                            <Row>Wins: {userDetailedData[0].wins}</Row>
+                            <Row>Losses: {userDetailedData[0].losses}</Row>
+                        </Col>
+                    </div>
+                </Container>
             ) : (
                 <></>
             )}
+            <Container className="detailsContainer">
+                {matchHistory && matchHistory.length > 0 ? (
+                    <Container id="mDetails">
+                        {matchHistory.map((match) => (
+                            <Card key={match} style={{ width: "18rem" }}>
+                                <Card.Img
+                                    variant="top"
+                                    src="holder.js/100px180"
+                                />
+                                <Card.Body>
+                                    <Card.Title>{match}</Card.Title>
+                                    <Card.Text>
+                                        Some quick example text to build on the
+                                        card title and make up the bulk of the
+                                        card's content.
+                                    </Card.Text>
+                                    <Button variant="primary">
+                                        Go somewhere
+                                    </Button>
+                                </Card.Body>
+                            </Card>
+                        ))}
+                    </Container>
+                ) : (
+                    <></>
+                )}
+            </Container>{" "}
         </section>
     );
 };

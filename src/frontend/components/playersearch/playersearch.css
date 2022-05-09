@@ -1,44 +1,65 @@
-.player-search-container {
+#hero-section {
+    background-color: rgb(255, 255, 255);
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.detailsContainer {
     background-color: rgb(255, 255, 255);
     border-radius: 1rem;
     padding: 1rem;
-    /*     border-style: solid;
- */
+    margin: 2rem;
     border-width: 0.1rem;
     box-shadow: 0px 0px 15px 10px rgb(233, 233, 233);
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
-#searchControlForm {
+#searchForm {
+    margin-right: 1rem;
     display: flex;
+    align-content: left;
+    flex-wrap: wrap;
 }
 #fullResult {
     display: flex;
+    flex-wrap: wrap;
 }
 #summData {
     text-align: left;
 }
 #summIconImg {
-    width: 100px;
     border-radius: 10px;
 }
-#resultsArea {
+.resultsArea {
     background-color: rgb(255, 255, 255);
-    display: flex;
-    min-height: 10rem;
 
-    margin-left: 1rem;
+    min-height: 10rem;
     box-shadow: inset 0px 0px 15px 10px rgb(233, 233, 233);
     padding: 2rem;
-    width: 100%;
+    display: flex;
+    align-content: left;
+    flex-wrap: wrap;
     border-radius: 0.5rem;
+    word-break: break-all;
 }
-#hero-section {
-    background-color: rgb(255, 255, 255);
-    padding: 2rem;
-}
+
 #btnSearch {
-    width: 100%;
     background-color: blueviolet;
     border: none;
+}
+#mainDetails {
+    text-align: left;
+}
+.resultsDetailsArea {
+    padding: 1rem;
+}
+#mDetails {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }

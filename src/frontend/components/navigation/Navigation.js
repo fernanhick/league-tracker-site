@@ -1,9 +1,10 @@
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
+import "./navigation.css";
 
 export const Navigation = () => {
     return (
-        <Navbar expand="lg" bg="dark" variant="dark">
+        <Navbar id="navigationBar" expand="lg" bg="dark" variant="dark">
             <Container>
                 <Navbar.Brand href="#home">League-Tracker</Navbar.Brand>
 
