@@ -20,6 +20,7 @@
     flex-wrap: wrap;
 }
 #searchForm {
+    color: rgb(187, 65, 65);
     margin-right: 1rem;
     display: flex;
     align-content: left;

@@ -226,7 +226,21 @@ const Playersearch = () => {
                                             id="partDetails"
                                             key={part.summonerId}
                                         >
-                                            <ListGroup.Item>
+                                            <ListGroup.Item
+                                                style={
+                                                    part.participantId < 6
+                                                        ? {
+                                                              backgroundColor:
+                                                                  "rgb(54, 70, 203)",
+                                                              color: "white",
+                                                          }
+                                                        : {
+                                                              backgroundColor:
+                                                                  "rgb(187, 65, 65)",
+                                                              color: "white",
+                                                          }
+                                                }
+                                            >
                                                 Name: {part.summonerName} || K:
                                                 {part.kills} D:
                                                 {part.deaths} A:
