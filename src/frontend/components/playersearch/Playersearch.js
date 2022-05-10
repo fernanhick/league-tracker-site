@@ -207,8 +207,8 @@ const Playersearch = () => {
                         {matches.map((match) => (
                             <Card
                                 key={match.info.gameId}
-                                style={{ width: "100%" }}
-                                id="cardTeams"
+                                /*                                 style={{ width: "100%" }}
+                                 */ id="cardTeams"
                             >
                                 <Card.Header>
                                     {" "}
@@ -245,45 +245,86 @@ const Playersearch = () => {
                                                 {part.kills} D:
                                                 {part.deaths} A:
                                                 {part.assists}{" "}
+                                                {part.championName}{" "}
+                                                <img
+                                                    style={{
+                                                        width: "2rem",
+                                                    }}
+                                                    src={`https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${part.championName}.png`}
+                                                />
                                             </ListGroup.Item>
                                             <ListGroup.Item>
-                                                Items:{" "}
-                                                <img
-                                                    style={{
-                                                        width: "2rem",
-                                                    }}
-                                                    src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${part.item0}.png`}
-                                                />{" "}
-                                                <img
-                                                    style={{
-                                                        width: "2rem",
-                                                    }}
-                                                    src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${part.item1}.png`}
-                                                />{" "}
-                                                <img
-                                                    style={{
-                                                        width: "2rem",
-                                                    }}
-                                                    src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${part.item2}.png`}
-                                                />{" "}
-                                                <img
-                                                    style={{
-                                                        width: "2rem",
-                                                    }}
-                                                    src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${part.item3}.png`}
-                                                />{" "}
-                                                <img
-                                                    style={{
-                                                        width: "2rem",
-                                                    }}
-                                                    src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${part.item4}.png`}
-                                                />{" "}
-                                                <img
-                                                    style={{
-                                                        width: "2rem",
-                                                    }}
-                                                    src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${part.item5}.png`}
-                                                />
+                                                Items:
+                                                {part.item0 !== 0 ? (
+                                                    <img
+                                                        style={{
+                                                            width: "2rem",
+                                                        }}
+                                                        src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${part.item0}.png`}
+                                                    />
+                                                ) : (
+                                                    ""
+                                                )}{" "}
+                                                {part.item1 !== 0 ? (
+                                                    <img
+                                                        style={{
+                                                            width: "2rem",
+                                                        }}
+                                                        src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${part.item1}.png`}
+                                                    />
+                                                ) : (
+                                                    ""
+                                                )}{" "}
+                                                {part.item2 !== 0 ? (
+                                                    <img
+                                                        style={{
+                                                            width: "2rem",
+                                                        }}
+                                                        src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${part.item2}.png`}
+                                                    />
+                                                ) : (
+                                                    ""
+                                                )}{" "}
+                                                {part.item3 !== 0 ? (
+                                                    <img
+                                                        style={{
+                                                            width: "2rem",
+                                                        }}
+                                                        src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${part.item3}.png`}
+                                                    />
+                                                ) : (
+                                                    ""
+                                                )}{" "}
+                                                {part.item4 !== 0 ? (
+                                                    <img
+                                                        style={{
+                                                            width: "2rem",
+                                                        }}
+                                                        src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${part.item4}.png`}
+                                                    />
+                                                ) : (
+                                                    ""
+                                                )}{" "}
+                                                {part.item5 !== 0 ? (
+                                                    <img
+                                                        style={{
+                                                            width: "2rem",
+                                                        }}
+                                                        src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${part.item5}.png`}
+                                                    />
+                                                ) : (
+                                                    ""
+                                                )}{" "}
+                                                {part.item6 !== 0 ? (
+                                                    <img
+                                                        style={{
+                                                            width: "2rem",
+                                                        }}
+                                                        src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${part.item6}.png`}
+                                                    />
+                                                ) : (
+                                                    ""
+                                                )}{" "}
                                             </ListGroup.Item>
                                         </ListGroup>
                                     ))}
