@@ -44,7 +44,7 @@ const Playersearch = () => {
     };
 
     const searchForPlayer = (event) => {
-        let apiString = `https://${region}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${playerSearched}?api_key=${process.env.REACT_APP_RIOT_API_KEY}`;
+        let apiString = `https://${region}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${playerSearched}?api_key=${process.env.REACT_APP_RIOT_API}`;
         axios
             .get(apiString)
             .then(function (response) {
@@ -80,7 +80,7 @@ const Playersearch = () => {
         let matchDetails = [];
         let uri = "";
         for (let i = 0; i < res.length; i++) {
-            uri = `https://${continent}.api.riotgames.com/lol/match/v5/matches/${res[i]}?api_key=${process.env.REACT_APP_RIOT_API_KEY}`;
+            uri = `https://${continent}.api.riotgames.com/lol/match/v5/matches/${res[i]}?api_key=${process.env.REACT_APP_RIOT_API}`;
             await axios
                 .get(uri)
                 .then(function (res) {
@@ -98,9 +98,9 @@ const Playersearch = () => {
     };
 
     const setDetailedDataQuery = async (event) => {
-        let summonerD1 = `https://${region}.api.riotgames.com/lol/league/v4/entries/by-summoner/${userData.id}?api_key=${process.env.REACT_APP_RIOT_API_KEY}`;
+        let summonerD1 = `https://${region}.api.riotgames.com/lol/league/v4/entries/by-summoner/${userData.id}?api_key=${process.env.REACT_APP_RIOT_API}`;
 
-        let summonerDMatches = `https://${continent}.api.riotgames.com/lol/match/v5/matches/by-puuid/${userData.puuid}/ids?start=0&count=5&api_key=${process.env.REACT_APP_RIOT_API_KEY}`;
+        let summonerDMatches = `https://${continent}.api.riotgames.com/lol/match/v5/matches/by-puuid/${userData.puuid}/ids?start=0&count=5&api_key=${process.env.REACT_APP_RIOT_API}`;
 
         await axios
             .get(summonerD1)
