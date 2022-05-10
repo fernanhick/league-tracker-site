@@ -10,6 +10,7 @@ import {
     Row,
     Col,
     Card,
+    ListGroup,
 } from "react-bootstrap";
 import "./playersearch.css";
 import axios from "axios";
@@ -83,12 +84,7 @@ const Playersearch = () => {
             await axios
                 .get(uri)
                 .then(function (res) {
-                    matchDetails.push(res.data);for (let i = 0; i < res.data.metadata.participants.length; i++) {
-            const e = res.data.metadata.participants[i];
-            if (e === userData.puuid) {
-                console.log(i);
-            }
-        }
+                    matchDetails.push(res.data);
                 })
                 .catch(function (err) {
                     console.log(err);
@@ -97,7 +93,6 @@ const Playersearch = () => {
 
         setMatches(matchDetails);
 
-        
         setLoadingMatches(false);
         console.log(matches);
     };
@@ -208,31 +203,76 @@ const Playersearch = () => {
                 <></>
             ) : (
                 <Container className="detailsContainer">
-                    {matches.info}
                     <Container id="mDetails">
                         {matches.map((match) => (
                             <Card
                                 key={match.info.gameId}
-                                style={{ width: "18rem" }}
+                                style={{ width: "100%" }}
+                                id="cardTeams"
                             >
-                                <Card.Img
-                                    variant="top"
-                                    src="holder.js/100px180"
-                                />
-                                <Card.Body>
-                                    <Card.Title>
-                                        {match.info.teams[0].win === true
-                                            ? "Victory"
-                                            : "Defeat"}
-                                    </Card.Title>
+                                <Card.Header>
+                                    {" "}
+                                    ID:{match.info.gameId} {match.info.gameMode}
+                                </Card.Header>
+                                <Card.Body style={{ textAlign: "left" }}>
                                     <Card.Text>
-                                        Some quick example text to build on the
-                                        card title and make up the bulk of the
-                                        card's content.
+                                        {match.info.teams[0].win === true
+                                            ? "Team One"
+                                            : "Team Two"}{" "}
+                                        Winner
                                     </Card.Text>
-                                    <Button variant="primary">
-                                        Go somewhere
-                                    </Button>
+                                    {match.info.participants.map((part) => (
+                                        <ListGroup
+                                            id="partDetails"
+                                            key={part.summonerId}
+                                        >
+                                            <ListGroup.Item>
+                                                Name: {part.summonerName} || K:
+                                                {part.kills} D:
+                                                {part.deaths} A:
+                                                {part.assists}{" "}
+                                            </ListGroup.Item>
+                                            <ListGroup.Item>
+                                                Items:{" "}
+                                                <img
+                                                    style={{
+                                                        width: "2rem",
+                                                    }}
+                                                    src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${part.item0}.png`}
+                                                />{" "}
+                                                <img
+                                                    style={{
+                                                        width: "2rem",
+                                                    }}
+                                                    src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${part.item1}.png`}
+                                                />{" "}
+                                                <img
+                                                    style={{
+                                                        width: "2rem",
+                                                    }}
+                                                    src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${part.item2}.png`}
+                                                />{" "}
+                                                <img
+                                                    style={{
+                                                        width: "2rem",
+                                                    }}
+                                                    src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${part.item3}.png`}
+                                                />{" "}
+                                                <img
+                                                    style={{
+                                                        width: "2rem",
+                                                    }}
+                                                    src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${part.item4}.png`}
+                                                />{" "}
+                                                <img
+                                                    style={{
+                                                        width: "2rem",
+                                                    }}
+                                                    src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${part.item5}.png`}
+                                                />
+                                            </ListGroup.Item>
+                                        </ListGroup>
+                                    ))}
                                 </Card.Body>
                             </Card>
                         ))}
