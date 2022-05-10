@@ -18,14 +18,15 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    gap: 0.5rem;
 }
 #searchForm {
     color: rgb(187, 65, 65);
     margin-right: 1rem;
     display: flex;
     align-content: left;
-    justify-content: space-between;
     flex-wrap: wrap;
+    gap: 0.5rem;
 }
 #fullResult {
     display: flex;
