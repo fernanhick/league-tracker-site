@@ -14,6 +14,7 @@ import {
 } from "react-bootstrap";
 import "./playersearch.css";
 import axios from "axios";
+import Header from "../header/Header";
 
 const Playersearch = () => {
     const [playerSearched, setPlayerSearched] = useState("");
