@@ -1,10 +1,19 @@
 #navigationBar {
     box-shadow: inset 0px -15px 10px -10px blueviolet;
 }
-
+.me-auto {
+    display: flex;
+}
 .me-auto > a {
+    flex: 1 1 0;
     text-decoration: none;
     text-transform: uppercase;
-    padding: 1rem;
+    padding: 0.7rem;
     color: white;
+}
+.me-auto > a:hover {
+    color: blueviolet;
+}
+#responsive-navbar-nav {
+    align-items: flex-end;
 }
