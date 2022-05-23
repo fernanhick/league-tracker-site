@@ -101,7 +101,8 @@
 /************ CARD FOR GAMES PLAYED **************/
 #cardTeams.card {
     display: flex;
-    max-width: 25%;
+    /*     max-width: 25%;
+ */
     min-width: 300px;
     justify-content: space-around;
     margin-bottom: 1rem;
@@ -109,7 +110,11 @@
 #partDetails {
     margin-bottom: 1rem;
     width: 100%;
+    display: flex;
+    /*     flex-direction: row;
+ */
 }
+
 #summCont {
     display: flex;
     align-items: center;
@@ -145,11 +150,11 @@
     color: white;
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 .champion {
     gap: 1rem;
     width: 100%;
+    justify-content: space-between;
     display: flex;
     flex-wrap: wrap;
 }

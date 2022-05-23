@@ -418,7 +418,7 @@ const Playersearch = () => {
                                         {match.info.participants.map((part) => (
                                             <ListGroup
                                                 id="partDetails"
-                                                key={part.summonerId}
+                                                key={match.info.gameId++}
                                                 className={
                                                     part.participantId < 6
                                                         ? "team-one"
