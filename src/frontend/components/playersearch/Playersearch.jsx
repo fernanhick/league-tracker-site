@@ -24,7 +24,9 @@ const Playersearch = () => {
     const [matchHistory, setMatchHistory] = useState(null);
     const [matches, setMatches] = useState(null);
     const [loadingMatches, setLoadingMatches] = useState(true);
-
+    const imgSite = "http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/";
+    const champPage =
+        "https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/";
     const regions = [
         { label: "Brazil", value: "br1" },
         { label: "EuropeNE", value: "eun1" },
@@ -145,10 +147,12 @@ const Playersearch = () => {
                             ))}
                         </select>
                     </InputGroup>
+
                     <Form.Control
                         type="text"
                         id="searchControlForm"
                         placeholder="Username"
+                        content="agentfercho"
                         aria-describedby="searchHelpBlock"
                         onChange={(e) => setPlayerSearched(e.target.value)}
                     ></Form.Control>
@@ -158,14 +162,26 @@ const Playersearch = () => {
                     <Form.Text id="searchHelpBlock" muted>
                         Please input the username of the player for searching.
                     </Form.Text>
+                    <div className="tool-tip">
+                        <div>
+                            Example: Region EuropeWE, Username agentfercho
+                        </div>
+                    </div>
                 </Form>
                 <Container className="resultsArea">
                     {userData ? (
                         <div id="fullResult">
                             <div id="summData">
-                                <div>Name: {userData.name}</div>
-                                <div>ID: {userData.id}</div>
-                                <div>Level: {userData.summonerLevel}</div>
+                                <div>
+                                    <h1>Username:</h1> {userData.name}
+                                </div>
+                                <div>
+                                    <h1>ID:</h1>
+                                    {userData.id}
+                                </div>
+                                <div>
+                                    <h1>Level:</h1> {userData.summonerLevel}
+                                </div>
                                 <div id="summIcon">
                                     <img
                                         alt="Summoner Icon"
@@ -188,19 +204,7 @@ const Playersearch = () => {
                     )}
                 </Container>
             </Container>
-            {/* {userDetailedData && userDetailedData.length > 0 ? (
-                <Container className="detailsContainer">
-                    <div className="resultsDetailsArea">
-                        <Col id="mainDetails">
-                            <Row>Name: {userDetailedData[0].summonerName}</Row>
-                            <Row>Wins: {userDetailedData[0].wins}</Row>
-                            <Row>Losses: {userDetailedData[0].losses}</Row>
-                        </Col>
-                    </div>
-                </Container>
-            ) : (
-                <></>
-            )} */}
+
             {loadingMatches ? (
                 <></>
             ) : (
@@ -214,15 +218,11 @@ const Playersearch = () => {
                                     userData.name === part.summonerName ? (
                                         <div
                                             className="champion"
-                                            key={part.championName}
+                                            key={match.info.id}
                                         >
                                             <div className="img-section">
                                                 <img
-                                                    style={{
-                                                        width: "4rem",
-                                                        height: "4rem",
-                                                    }}
-                                                    src={`https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${part.championName}.png`}
+                                                    src={`${champPage}${part.championName}.png`}
                                                 />
                                                 {match.info.teams[0].win ===
                                                     true &&
@@ -246,6 +246,7 @@ const Playersearch = () => {
                                             </div>
 
                                             <div className="stats-build">
+                                                <h1>Champion</h1>
                                                 <div className="champ-name">
                                                     {part.championName}
                                                 </div>
@@ -277,6 +278,93 @@ const Playersearch = () => {
                                                     {part.totalDamageTaken}
                                                 </div>
                                             </div>
+                                            <div className="kills-streak">
+                                                <h1>Kill streak</h1>
+                                                {part.doubleKills > 0 ? (
+                                                    <div>
+                                                        Double Kills:{" "}
+                                                        {part.doubleKills}
+                                                    </div>
+                                                ) : (
+                                                    ""
+                                                )}
+                                                {part.tripleKills > 0 ? (
+                                                    <div>
+                                                        Triple Kills:{" "}
+                                                        {part.tripleKills}
+                                                    </div>
+                                                ) : (
+                                                    ""
+                                                )}
+                                                {part.quadraKills > 0 ? (
+                                                    <div>
+                                                        Quadra Kills:{" "}
+                                                        {part.quadraKills}
+                                                    </div>
+                                                ) : (
+                                                    ""
+                                                )}
+                                                {part.pentaKills > 0 ? (
+                                                    <div>
+                                                        Penta Kills:{" "}
+                                                        {part.pentaKills}
+                                                    </div>
+                                                ) : (
+                                                    ""
+                                                )}
+                                            </div>
+                                            <div className="build-items">
+                                                <h1>Items</h1>
+                                                {part.item0 !== 0 ? (
+                                                    <img
+                                                        src={`${imgSite}${part.item0}.png`}
+                                                    />
+                                                ) : (
+                                                    ""
+                                                )}{" "}
+                                                {part.item1 !== 0 ? (
+                                                    <img
+                                                        src={`${imgSite}${part.item1}.png`}
+                                                    />
+                                                ) : (
+                                                    ""
+                                                )}{" "}
+                                                {part.item2 !== 0 ? (
+                                                    <img
+                                                        src={`${imgSite}${part.item2}.png`}
+                                                    />
+                                                ) : (
+                                                    ""
+                                                )}{" "}
+                                                {part.item3 !== 0 ? (
+                                                    <img
+                                                        src={`${imgSite}${part.item3}.png`}
+                                                    />
+                                                ) : (
+                                                    ""
+                                                )}{" "}
+                                                {part.item4 !== 0 ? (
+                                                    <img
+                                                        src={`${imgSite}${part.item4}.png`}
+                                                    />
+                                                ) : (
+                                                    ""
+                                                )}{" "}
+                                                {part.item5 !== 0 ? (
+                                                    <img
+                                                        src={`${imgSite}${part.item5}.png`}
+                                                    />
+                                                ) : (
+                                                    ""
+                                                )}{" "}
+                                                {part.item6 !== 0 ? (
+                                                    <img
+                                                        src={`${imgSite}${part.item6}.png`}
+                                                    />
+                                                ) : (
+                                                    ""
+                                                )}{" "}
+                                            </div>
                                         </div>
                                     ) : (
                                         <></>
@@ -285,6 +373,27 @@ const Playersearch = () => {
                             </div>
                         ))}
                     </div>
+                    {/* DETAILS IF PLAYED RANKED GAMES */}
+
+                    {userDetailedData && userDetailedData.length > 0 ? (
+                        <div className="detailsContainer">
+                            <h1>Ranked Games</h1>
+                            <div className="resultsDetailsArea">
+                                <Col id="mainDetails">
+                                    <Row>
+                                        Name: {userDetailedData[0].summonerName}
+                                    </Row>
+                                    <Row>Wins: {userDetailedData[0].wins}</Row>
+                                    <Row>
+                                        Losses: {userDetailedData[0].losses}
+                                    </Row>
+                                </Col>
+                            </div>
+                        </div>
+                    ) : (
+                        <></>
+                    )}
+                    {/* DETAILS OF THE LAST 5 GAMES PLAYED */}
                     <div className="detailsContainer">
                         <h1>LAST 5 GAMES PLAYED</h1>
                         <div id="mDetails">
@@ -341,77 +450,56 @@ const Playersearch = () => {
                                                         style={{
                                                             width: "2rem",
                                                         }}
-                                                        src={`https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${part.championName}.png`}
+                                                        src={`${champPage}${part.championName}.png`}
                                                     />
                                                 </ListGroup.Item>
-                                                <ListGroup.Item>
+                                                <ListGroup.Item className="items-team">
                                                     Items:
                                                     {part.item0 !== 0 ? (
                                                         <img
-                                                            style={{
-                                                                width: "2rem",
-                                                            }}
-                                                            src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${part.item0}.png`}
+                                                            src={`${imgSite}${part.item0}.png`}
                                                         />
                                                     ) : (
                                                         ""
                                                     )}{" "}
                                                     {part.item1 !== 0 ? (
                                                         <img
-                                                            style={{
-                                                                width: "2rem",
-                                                            }}
-                                                            src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${part.item1}.png`}
+                                                            src={`${imgSite}${part.item1}.png`}
                                                         />
                                                     ) : (
                                                         ""
                                                     )}{" "}
                                                     {part.item2 !== 0 ? (
                                                         <img
-                                                            style={{
-                                                                width: "2rem",
-                                                            }}
-                                                            src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${part.item2}.png`}
+                                                            src={`${imgSite}${part.item2}.png`}
                                                         />
                                                     ) : (
                                                         ""
                                                     )}{" "}
                                                     {part.item3 !== 0 ? (
                                                         <img
-                                                            style={{
-                                                                width: "2rem",
-                                                            }}
-                                                            src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${part.item3}.png`}
+                                                            src={`${imgSite}${part.item3}.png`}
                                                         />
                                                     ) : (
                                                         ""
                                                     )}{" "}
                                                     {part.item4 !== 0 ? (
                                                         <img
-                                                            style={{
-                                                                width: "2rem",
-                                                            }}
-                                                            src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${part.item4}.png`}
+                                                            src={`${imgSite}${part.item4}.png`}
                                                         />
                                                     ) : (
                                                         ""
                                                     )}{" "}
                                                     {part.item5 !== 0 ? (
                                                         <img
-                                                            style={{
-                                                                width: "2rem",
-                                                            }}
-                                                            src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${part.item5}.png`}
+                                                            src={`${imgSite}${part.item5}.png`}
                                                         />
                                                     ) : (
                                                         ""
                                                     )}{" "}
                                                     {part.item6 !== 0 ? (
                                                         <img
-                                                            style={{
-                                                                width: "2rem",
-                                                            }}
-                                                            src={`http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${part.item6}.png`}
+                                                            src={`${imgSite}${part.item6}.png`}
                                                         />
                                                     ) : (
                                                         ""
