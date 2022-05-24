@@ -41,9 +41,7 @@ export const Rotation = () => {
         setLoading(true);
         for (let i = 0; i < rotNum.length; i++) {
             for (let j = 0; j < Object.keys(chData).length; j++) {
-                // console.log(chData[j]);
                 if (rotNum[i] == chData[j].key) {
-                    console.log("found champ", chData[j].key, chData[j].name);
                     rotationData.push({
                         name: chData[j].name,
                         image: chData[j].image,
@@ -54,7 +52,6 @@ export const Rotation = () => {
         }
         setChampsRotation(rotationData);
         setLoading(false);
-        console.log(rotationData);
     };
 
     return (
