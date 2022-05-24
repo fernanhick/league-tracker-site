@@ -1,19 +1,19 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { champData } from "../champions/ch";
+import { main } from "../champions/ch";
 import("./rotation.css");
 export const Rotation = () => {
     const [rotation, setRotation] = useState([]);
     const [champsArray, setChampsArray] = useState(null);
     const [champsRotation, setChampsRotation] = useState(null);
     const [loading, setLoading] = useState(true);
-    const champs = Promise.resolve(champData);
+
+    const champs = Promise.resolve(main());
     champs.then(function (v) {
         setChampsArray(v);
     });
 
-    const rotationString =
-        "https://euw1.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=RGAPI-d0d3a210-4f36-4cf7-82de-e052484dd5cf";
+    const rotationString = `https://euw1.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=${process.env.REACT_APP_RIOT_API}`;
     const getRotation = async () => {
         setLoading(true);
 
