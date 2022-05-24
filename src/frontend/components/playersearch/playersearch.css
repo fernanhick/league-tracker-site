@@ -19,6 +19,7 @@
 .detailsContainer.container:nth-child(1) {
     max-width: 400px;
     margin: 0;
+    max-height: 80vh;
 }
 .detailsContainer {
     background-color: rgb(255, 255, 255);

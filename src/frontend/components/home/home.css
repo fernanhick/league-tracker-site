@@ -1,0 +1,58 @@
+.home-section {
+    min-height: 100vh;
+}
+
+/* **********HEADER SECTION START************** */
+
+.home-header {
+    padding: 1vh 10vw;
+    background-color: blueviolet;
+    color: rgb(225, 225, 225);
+    cursor: default;
+}
+.home-header h1 {
+    color: white;
+}
+.header-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+}
+.info-text {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+/* **************LINKS STYLING******************** */
+.quick-links {
+    display: flex;
+    flex-direction: column;
+}
+.link a {
+    text-decoration: none;
+    flex: 1 1 0;
+    background-color: #282c34;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.link a:hover {
+    color: blueviolet;
+    background-color: #cdcdcd;
+    transition: 0.3s;
+}
+
+.link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    color: rgb(36, 36, 36);
+}
+/* **********HEADER SECTION END************** */
+
+/* ***********BODY SECTION STYLING START*************** */

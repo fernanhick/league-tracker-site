@@ -1,0 +1,43 @@
+.champ-box img {
+    max-width: 100%;
+}
+
+.champions-section {
+    padding: 3vh 10vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.champ-box {
+    color: white;
+    display: flex;
+    /*     flex-wrap: wrap;
+ */
+    min-width: 180px;
+    flex: 1 1 0;
+    border-radius: 5px;
+    background-color: black;
+    border: 1px solid black;
+    justify-content: space-between;
+    align-items: center;
+}
+.champ-thumb {
+    /*     min-width: 100%;
+ */ /*     flex-direction: column;
+ */
+}
+.champ-details h1 {
+    font-size: 1.1rem;
+    margin: 0;
+}
+.champ-name {
+    border-bottom: 1px solid white;
+}
+.champ-details {
+    padding: 0.3rem;
+
+    min-width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

@@ -12,14 +12,17 @@ const main = async () => {
                 name: value.name,
                 title: value.title,
                 image: value.image.full,
+                key: value.key,
             },
         ];
     }, []);
-
-    console.info(result);
+    return result;
 };
 
 main().catch((error) => {
     console.error(error);
 });
-//smerlos here
+
+export const champData = main().catch((error) => {
+    console.error(error);
+});
