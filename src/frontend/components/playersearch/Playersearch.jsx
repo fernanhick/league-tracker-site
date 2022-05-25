@@ -447,9 +447,6 @@ const Playersearch = () => {
                                                     {part.assists}{" "}
                                                     {part.championName}{" "}
                                                     <img
-                                                        style={{
-                                                            width: "2rem",
-                                                        }}
                                                         src={`${champPage}${part.championName}.png`}
                                                     />
                                                 </ListGroup.Item>
