@@ -19,7 +19,6 @@
 .detailsContainer.container:nth-child(1) {
     max-width: 400px;
     margin: 0;
-    max-height: 80vh;
 }
 .detailsContainer {
     background-color: rgb(255, 255, 255);
@@ -182,4 +181,20 @@
 .img-section > img {
     width: 4.5rem;
     height: 4.5rem;
+}
+
+@media screen and (max-width: 800px) {
+    .champion > * {
+        font-size: 0.6rem;
+    }
+    .build-items > img {
+        width: 1.5rem;
+    }
+    .builds h1 {
+        font-size: 0.7rem;
+    }
+    .img-section > img {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
 }

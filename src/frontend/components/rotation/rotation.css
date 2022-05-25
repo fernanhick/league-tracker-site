@@ -19,7 +19,7 @@
     padding: 5px 5vw;
     background-color: black;
 }
-.champ-name {
+.champs-name {
     color: white;
     background-color: black;
     border: none;
@@ -29,7 +29,7 @@
     .champ img {
         width: 3.5rem;
     }
-    .champ-name {
+    .champs-name {
         font-size: 0.6rem;
     }
 }

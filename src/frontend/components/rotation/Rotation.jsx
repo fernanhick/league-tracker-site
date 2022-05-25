@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { main } from "../champions/ch";
+import { getRotation } from "./RotationController";
 import("./rotation.css");
 export const Rotation = () => {
     const [rotation, setRotation] = useState([]);
@@ -8,27 +9,13 @@ export const Rotation = () => {
     const [champsRotation, setChampsRotation] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const champs = Promise.resolve(main());
-    champs.then(function (v) {
-        setChampsArray(v);
-    });
-
-    const rotationString = `https://euw1.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=${process.env.REACT_APP_RIOT_API}`;
-    const getRotation = async () => {
-        setLoading(true);
-
-        await axios
-            .get(rotationString)
-            .then(function (res) {
-                setRotation(res.data.freeChampionIds);
-            })
-            .catch(function (err) {
-                console.log(err);
-            });
-    };
-
     useEffect(() => {
-        getRotation();
+        main().then((v) => {
+            setChampsArray(v);
+        });
+        getRotation().then((v) => {
+            setRotation(v);
+        });
     }, []);
 
     useEffect(() => {
@@ -67,7 +54,7 @@ export const Rotation = () => {
                                 src={`https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${champ.image}`}
                                 alt=""
                             />
-                            <div className="champ-name"> {champ.name}</div>
+                            <div className="champs-name"> {champ.name}</div>
                         </div>
                     ))}
                 </>

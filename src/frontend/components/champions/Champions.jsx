@@ -1,11 +1,10 @@
-import { render } from "@testing-library/react";
 import axios from "axios";
-import React, { useEffect, useState, useRef, createRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import("./champions.css");
 
 const Champions = () => {
     const [championsData, setChampionsData] = useState([]);
-    const [rotationChamps, setRotationChamps] = useState([]);
+
     const fetchChampions = async function () {
         await axios
             .get(
@@ -20,7 +19,6 @@ const Champions = () => {
     };
     useEffect(() => {
         fetchChampions();
-        /*         fetchRotation(); */
     }, []);
 
     const boxRef = useRef();
@@ -29,7 +27,6 @@ const Champions = () => {
         boxRef.current.classList.toggle("show");
         console.log(boxRef.current);
     };
-    console.log(rotationChamps);
     const Champs = () => {
         return (
             <div className="champions-section">
@@ -39,12 +36,10 @@ const Champions = () => {
                         key={champion.name}
                         onClick={handleClick}
                     >
-                        <div className="champ-thumb">
-                            <img
-                                src={`https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${champion.image.full}`}
-                                alt=""
-                            />
-                        </div>
+                        <img
+                            src={`https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${champion.image.full}`}
+                            alt=""
+                        />
 
                         <div ref={boxRef} className={`champ-details `}>
                             <h1>Name</h1>

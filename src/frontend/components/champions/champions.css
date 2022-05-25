@@ -1,5 +1,6 @@
 .champ-box img {
-    max-width: 100%;
+    /*     flex: 0 1 0;
+ */
 }
 
 .champions-section {
@@ -11,9 +12,11 @@
 .champ-box {
     color: white;
     display: flex;
+    flex: 1 1 0;
     /*     flex-wrap: wrap;
  */
-    min-width: 180px;
+    /*     min-width: 180px;
+ */
     flex: 1 1 0;
     border-radius: 5px;
     background-color: black;
@@ -30,14 +33,32 @@
     font-size: 1.1rem;
     margin: 0;
 }
-.champ-name {
-    border-bottom: 1px solid white;
-}
+
 .champ-details {
     padding: 0.3rem;
 
-    min-width: 100px;
+    /*     min-width: 100px;
+ */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+@media screen and (max-width: 800px) {
+    .champ-box img {
+        width: 4.5rem;
+    } /* 
+    .champ-box {
+        flex: 1 1 0;
+    } */
+    .champ-details > h1 {
+        font-size: 0.7rem;
+    }
+
+    .champ-details {
+        font-size: 0.6rem;
+    }
+    .champ-name > * {
+        font-size: 0.6rem;
+    }
 }
