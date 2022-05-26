@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { main } from "../champions/ch";
 import { getRotation } from "./RotationController";

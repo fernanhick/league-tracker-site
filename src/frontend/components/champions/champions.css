@@ -1,8 +1,3 @@
-.champ-box img {
-    /*     flex: 0 1 0;
- */
-}
-
 .champions-section {
     padding: 3vh 10vw;
     display: flex;
@@ -24,11 +19,7 @@
     justify-content: space-between;
     align-items: center;
 }
-.champ-thumb {
-    /*     min-width: 100%;
- */ /*     flex-direction: column;
- */
-}
+
 .champ-details h1 {
     font-size: 1.1rem;
     margin: 0;

@@ -1,0 +1,12 @@
+.footer-bar {
+    min-width: 100%;
+    min-height: 3rem;
+    background-color: #282c34;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    bottom: 0;
+    padding: 0rem 10vw;
+    color: white;
+}

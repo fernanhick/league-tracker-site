@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Link, Routes, Route } from "react-router-dom";
 import Champions from "./frontend/components/champions/Champions";
 import Home from "./frontend/components/home/Home";
 import { Rotation } from "./frontend/components/rotation/Rotation";
+import { Footer } from "./frontend/components/footer/Footer";
 function App() {
     return (
         <div className="App">
@@ -17,6 +18,7 @@ function App() {
                     <Route path="/champions" element={<Champions />} />
                     <Route path="/summoner" element={<Playersearch />} />
                 </Routes>
+                <Footer />
             </Router>
         </div>
     );

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import LeaderBoards from "../leaderboards/LeaderBoards.jsx";
 import("./home.css");
 const Home = () => {
     return (
@@ -33,6 +34,9 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="leaderboards-section">
+                <LeaderBoards />
             </div>
         </div>
     );

@@ -1,0 +1,50 @@
+.player {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pl-box-title {
+    display: flex;
+    justify-content: space-between;
+}
+.pl-box {
+    flex: 1 1 0;
+    max-width: 300px;
+    text-align: left;
+    padding: 1rem;
+    background-color: rgb(46, 46, 46);
+    color: white;
+}
+.pl-box > h1 {
+    font-size: 1.3rem;
+    text-align: center;
+}
+.pl-name {
+    width: 100%;
+}
+.rank {
+    width: 30%;
+}
+.leaders-board {
+    padding: 10vh 10vw;
+}
+
+.leaders-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+    .leaders-board > * {
+        font-size: 0.6rem;
+    }
+
+    .leaders-board {
+        padding: 1rem;
+    }
+    .pl-box > h1 {
+        font-size: 0.8rem;
+    }
+}

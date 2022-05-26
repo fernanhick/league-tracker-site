@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
     Container,
     Button,
     InputGroup,
     Form,
-    DropdownButton,
-    Dropdown,
-    ButtonGroup,
     Row,
     Col,
     Card,
@@ -14,14 +11,12 @@ import {
 } from "react-bootstrap";
 import "./playersearch.css";
 import axios from "axios";
-import Header from "../header/Header";
 
 const Playersearch = () => {
     const [playerSearched, setPlayerSearched] = useState("");
     const [userData, setUserData] = useState(null);
     const [userDetailedData, setUserDetailedData] = useState(null);
     const [region, setRegion] = useState("Select Region");
-    const [matchHistory, setMatchHistory] = useState(null);
     const [matches, setMatches] = useState(null);
     const [loadingMatches, setLoadingMatches] = useState(true);
     const imgSite = "http://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/";
@@ -120,7 +115,6 @@ const Playersearch = () => {
         await axios
             .get(summonerDMatches)
             .then(function (response) {
-                setMatchHistory(response.data);
                 populateMatches(response.data);
             })
             .catch(function (err) {
@@ -222,6 +216,7 @@ const Playersearch = () => {
                                         >
                                             <div className="img-section">
                                                 <img
+                                                    alt="champion"
                                                     src={`${champPage}${part.championName}.png`}
                                                 />
                                                 {match.info.teams[0].win ===
@@ -317,6 +312,7 @@ const Playersearch = () => {
                                                 <h1>Items</h1>
                                                 {part.item0 !== 0 ? (
                                                     <img
+                                                        alt={`${part.item0}`}
                                                         src={`${imgSite}${part.item0}.png`}
                                                     />
                                                 ) : (
@@ -324,6 +320,7 @@ const Playersearch = () => {
                                                 )}{" "}
                                                 {part.item1 !== 0 ? (
                                                     <img
+                                                        alt={`${part.item1}`}
                                                         src={`${imgSite}${part.item1}.png`}
                                                     />
                                                 ) : (
@@ -331,6 +328,7 @@ const Playersearch = () => {
                                                 )}{" "}
                                                 {part.item2 !== 0 ? (
                                                     <img
+                                                        alt={`${part.item2}`}
                                                         src={`${imgSite}${part.item2}.png`}
                                                     />
                                                 ) : (
@@ -338,6 +336,7 @@ const Playersearch = () => {
                                                 )}{" "}
                                                 {part.item3 !== 0 ? (
                                                     <img
+                                                        alt={`${part.item3}`}
                                                         src={`${imgSite}${part.item3}.png`}
                                                     />
                                                 ) : (
@@ -345,6 +344,7 @@ const Playersearch = () => {
                                                 )}{" "}
                                                 {part.item4 !== 0 ? (
                                                     <img
+                                                        alt={`${part.item4}`}
                                                         src={`${imgSite}${part.item4}.png`}
                                                     />
                                                 ) : (
@@ -352,6 +352,7 @@ const Playersearch = () => {
                                                 )}{" "}
                                                 {part.item5 !== 0 ? (
                                                     <img
+                                                        alt={`${part.item5}`}
                                                         src={`${imgSite}${part.item5}.png`}
                                                     />
                                                 ) : (
@@ -359,6 +360,7 @@ const Playersearch = () => {
                                                 )}{" "}
                                                 {part.item6 !== 0 ? (
                                                     <img
+                                                        alt={`${part.item6}`}
                                                         src={`${imgSite}${part.item6}.png`}
                                                     />
                                                 ) : (
@@ -398,11 +400,7 @@ const Playersearch = () => {
                         <h1>LAST 5 GAMES PLAYED</h1>
                         <div id="mDetails">
                             {matches.map((match) => (
-                                <Card
-                                    key={match.info.gameId}
-                                    /*                                 style={{ width: "100%" }}
-                                     */ id="cardTeams"
-                                >
+                                <Card key={match.info.gameId} id="cardTeams">
                                     <Card.Header>
                                         {" "}
                                         ID:{match.info.gameId}{" "}
@@ -447,6 +445,7 @@ const Playersearch = () => {
                                                     {part.assists}{" "}
                                                     {part.championName}{" "}
                                                     <img
+                                                        alt={part.championName}
                                                         src={`${champPage}${part.championName}.png`}
                                                     />
                                                 </ListGroup.Item>
@@ -454,6 +453,7 @@ const Playersearch = () => {
                                                     Items:
                                                     {part.item0 !== 0 ? (
                                                         <img
+                                                            alt={part.item0}
                                                             src={`${imgSite}${part.item0}.png`}
                                                         />
                                                     ) : (
@@ -461,6 +461,7 @@ const Playersearch = () => {
                                                     )}{" "}
                                                     {part.item1 !== 0 ? (
                                                         <img
+                                                            alt={part.item1}
                                                             src={`${imgSite}${part.item1}.png`}
                                                         />
                                                     ) : (
@@ -468,6 +469,7 @@ const Playersearch = () => {
                                                     )}{" "}
                                                     {part.item2 !== 0 ? (
                                                         <img
+                                                            alt={part.item2}
                                                             src={`${imgSite}${part.item2}.png`}
                                                         />
                                                     ) : (
@@ -475,6 +477,7 @@ const Playersearch = () => {
                                                     )}{" "}
                                                     {part.item3 !== 0 ? (
                                                         <img
+                                                            alt={part.item3}
                                                             src={`${imgSite}${part.item3}.png`}
                                                         />
                                                     ) : (
@@ -482,6 +485,7 @@ const Playersearch = () => {
                                                     )}{" "}
                                                     {part.item4 !== 0 ? (
                                                         <img
+                                                            alt={part.item4}
                                                             src={`${imgSite}${part.item4}.png`}
                                                         />
                                                     ) : (
@@ -489,6 +493,7 @@ const Playersearch = () => {
                                                     )}{" "}
                                                     {part.item5 !== 0 ? (
                                                         <img
+                                                            alt={part.item5}
                                                             src={`${imgSite}${part.item5}.png`}
                                                         />
                                                     ) : (
@@ -496,6 +501,7 @@ const Playersearch = () => {
                                                     )}{" "}
                                                     {part.item6 !== 0 ? (
                                                         <img
+                                                            alt={part.item6}
                                                             src={`${imgSite}${part.item6}.png`}
                                                         />
                                                     ) : (
