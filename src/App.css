@@ -37,3 +37,9 @@
         transform: rotate(360deg);
     }
 }
+@media screen and (max-width: 800px) {
+    body h1 {
+        font-size: 0.7rem;
+        margin: 0;
+    }
+}

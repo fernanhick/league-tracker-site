@@ -3,36 +3,62 @@
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    justify-content: space-between;
+}
+
+.champ-box img {
+    width: 7rem;
+    border-radius: 5px;
 }
 .champ-box {
     color: white;
     display: flex;
-    flex: 1 1 0;
+    flex: 0 1 0;
     border-radius: 5px;
     background-color: black;
     border: 1px solid black;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .champ-details h1 {
     font-size: 1.1rem;
     margin: 0;
+    bottom: 0;
 }
 
 .champ-details {
     padding: 0.3rem;
-
-    /*     min-width: 100px;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    backdrop-filter: blur(10px); /*     min-width: 100px;
  */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
+.tags-section {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    /*     justify-content: space-between;
+ */
+}
+.tag-title {
+    padding: 0.2rem 1rem;
+    flex: 1 1 0;
+    border-radius: 5px;
+    background-color: rgb(190, 153, 224);
+    cursor: pointer;
+    text-transform: uppercase;
+}
 
 @media screen and (max-width: 800px) {
     .champ-box img {
-        width: 2.5rem;
+        width: 3.8rem;
     } /* 
     .champ-box {
         flex: 1 1 0;
@@ -46,5 +72,8 @@
     }
     .champ-name > * {
         font-size: 0.6rem;
+    }
+    .tag-title {
+        font-size: 0.8rem;
     }
 }
