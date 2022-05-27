@@ -43,7 +43,6 @@
 #fullResult {
     display: flex;
     justify-content: space-between;
-
     flex-wrap: wrap;
 }
 .resultsArea.container h1 {

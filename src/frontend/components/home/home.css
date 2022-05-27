@@ -56,3 +56,15 @@
 /* **********HEADER SECTION END************** */
 
 /* ***********BODY SECTION STYLING START*************** */
+
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 0.8rem;
+    }
+    p {
+        font-size: 0.7rem;
+    }
+    .link a {
+        font-size: 0.7rem;
+    }
+}

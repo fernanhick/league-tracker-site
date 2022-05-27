@@ -27,6 +27,7 @@ const LeaderBoards = () => {
     let na = 1;
     return (
         <div className="leaders-board">
+            <h1>Leaderboards</h1>
             {loading ? (
                 <></>
             ) : (

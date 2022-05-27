@@ -4,7 +4,7 @@ import("./champions.css");
 
 const Champions = () => {
     const [championsData, setChampionsData] = useState([]);
-
+    const [tags, setTags] = useState([]);
     const fetchChampions = async function () {
         await axios
             .get(
@@ -20,6 +20,23 @@ const Champions = () => {
     useEffect(() => {
         fetchChampions();
     }, []);
+    useEffect(() => {
+        setTags(champTags());
+        console.log(tags);
+    }, [championsData]);
+
+    const champTags = () => {
+        let tagsFilter = [];
+        let tags = championsData.map((v) => v.tags);
+        tags.forEach((element) => {
+            element.forEach((e) => {
+                tagsFilter.push(e);
+            });
+        });
+        let unique = [...new Set(tagsFilter)];
+
+        return unique;
+    };
 
     const boxRef = useRef();
 
@@ -42,9 +59,9 @@ const Champions = () => {
                         />
 
                         <div ref={boxRef} className={`champ-details `}>
-                            <h1>Name</h1>
-                            <div className="champ-name">{champion.name}</div>
-                            <h1>Roles</h1>
+                            <div className="champ-name">
+                                <h1>{champion.name}</h1>
+                            </div>
                             {champion.tags.map((tag) => (
                                 <span key={tag}> {tag} </span>
                             ))}
