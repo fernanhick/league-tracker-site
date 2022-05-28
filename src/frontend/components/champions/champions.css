@@ -5,18 +5,25 @@
     gap: 1rem;
     justify-content: space-between;
 }
+.champ-section-title {
+    background-color: blueviolet;
+    width: 100%;
+    padding: 0.7rem;
+    color: rgb(235, 235, 235);
+    border-radius: 5px;
+    text-transform: uppercase;
+}
 
 .champ-box img {
     width: 12rem;
     border-radius: 5px;
     transition: all ease-in-out 0.3s;
+    overflow: hidden;
 }
 .champ-box:hover img {
-    border-radius: 5px 30px 5px 5px;
+    transform: scale(1.05);
 }
-.champ-box:hover {
-    border-radius: 5px 30px 5px 5px;
-}
+
 .champ-box:hover .champ-details h1 {
     font-size: 1.3rem;
 }
@@ -92,6 +99,7 @@
         font-size: 0.6rem;
     }
     .tag-title {
-        font-size: 0.8rem;
+        font-size: 0.6rem;
+        font-weight: 600;
     }
 }

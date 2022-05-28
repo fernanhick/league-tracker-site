@@ -1,5 +1,5 @@
 #navigationBar {
-    box-shadow: inset 0px -15px 10px -10px blueviolet;
+    background-color: blueviolet;
 }
 .me-auto {
     display: flex;
@@ -12,7 +12,7 @@
     color: white;
 }
 .me-auto > a:hover {
-    color: blueviolet;
+    color: rgb(0, 0, 0);
 }
 #responsive-navbar-nav {
     align-items: flex-end;

@@ -81,6 +81,9 @@ const Champions = () => {
     const Champs = () => {
         return (
             <div className="champions-section">
+                <div className="champ-section-title">
+                    <h1>List of Champions</h1>
+                </div>
                 <div className="tags-section">
                     {tags.map((tag) => (
                         <div

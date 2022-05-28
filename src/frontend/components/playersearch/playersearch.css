@@ -107,6 +107,9 @@
     justify-content: space-around;
     margin-bottom: 1rem;
 }
+#partDetails img {
+    width: 2rem;
+}
 #partDetails {
     margin-bottom: 1rem;
     width: 100%;
@@ -194,8 +197,8 @@
         font-size: 0.7rem;
     }
     .img-section > img {
-        width: 3.5rem;
-        height: 3.5rem;
+        width: 3rem;
+        height: 3rem;
     }
     #mDetails * {
         font-size: 0.7rem;

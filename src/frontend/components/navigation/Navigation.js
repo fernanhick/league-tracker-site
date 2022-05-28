@@ -5,7 +5,7 @@ import "./navigation.css";
 
 export const Navigation = () => {
     return (
-        <Navbar id="navigationBar" expand="lg" bg="dark" variant="dark">
+        <Navbar id="navigationBar" expand="lg" /* bg="dark" */ variant="dark">
             <Container>
                 <Navbar.Brand>League Tracker</Navbar.Brand>
 
