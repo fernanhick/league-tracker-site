@@ -7,9 +7,23 @@
 }
 
 .champ-box img {
-    width: 7rem;
+    width: 12rem;
     border-radius: 5px;
+    transition: all ease-in-out 0.3s;
 }
+.champ-box:hover img {
+    border-radius: 5px 30px 5px 5px;
+}
+.champ-box:hover {
+    border-radius: 5px 30px 5px 5px;
+}
+.champ-box:hover .champ-details h1 {
+    font-size: 1.3rem;
+}
+.champ-box:hover .champ-details {
+    background-color: rgb(176, 86, 255);
+}
+
 .champ-box {
     color: white;
     display: flex;
@@ -20,12 +34,14 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
+    transition: all ease-in-out 0.2s;
 }
 
 .champ-details h1 {
     font-size: 1.1rem;
     margin: 0;
     bottom: 0;
+    transition: all ease-in-out 0.2s;
 }
 
 .champ-details {
@@ -35,9 +51,11 @@
     bottom: 0;
     backdrop-filter: blur(10px); /*     min-width: 100px;
  */
+    border-radius: 0 0 2px 2px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: all ease-in-out 0.2s;
 }
 .tags-section {
     width: 100%;

@@ -31,3 +31,33 @@ export const getENleaders = async () => {
     //  result.sort();
     return result;
 };
+export const getLA1leaders = async () => {
+    const str = `https://la1.api.riotgames.com/lol/league/v4/grandmasterleagues/by-queue/RANKED_SOLO_5x5?api_key=${process.env.REACT_APP_RIOT_API}`;
+
+    const { data } = await axios.get(str).catch((err) => {
+        console.log(err);
+    });
+    const result = Object.values(data.entries);
+    //  result.sort();
+    return result;
+};
+export const getLA2leaders = async () => {
+    const str = `https://la2.api.riotgames.com/lol/league/v4/grandmasterleagues/by-queue/RANKED_SOLO_5x5?api_key=${process.env.REACT_APP_RIOT_API}`;
+
+    const { data } = await axios.get(str).catch((err) => {
+        console.log(err);
+    });
+    const result = Object.values(data.entries);
+    //  result.sort();
+    return result;
+};
+export const getKRleaders = async () => {
+    const str = `https://kr.api.riotgames.com/lol/league/v4/grandmasterleagues/by-queue/RANKED_SOLO_5x5?api_key=${process.env.REACT_APP_RIOT_API}`;
+
+    const { data } = await axios.get(str).catch((err) => {
+        console.log(err);
+    });
+    const result = Object.values(data.entries);
+    //  result.sort();
+    return result;
+};
