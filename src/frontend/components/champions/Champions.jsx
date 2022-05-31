@@ -15,7 +15,6 @@ const Champions = () => {
                 "https://ddragon.leagueoflegends.com/cdn/12.9.1/data/en_US/champion.json"
             )
             .then(function (response) {
-                console.log(response.data.data);
                 setChampionsData(Object.values(response.data.data));
             })
             .catch(function (err) {
@@ -70,13 +69,10 @@ const Champions = () => {
 
     const handleClick = () => {
         boxRef.current.classList.toggle("show");
-        console.log(boxRef.current);
     };
 
     const handleChoice = (e) => {
-        /*         tagRef.current.style.backgroundColor = "black";
-         */ setTagSelected(e.target.attributes.value.value);
-        /* e.target.style.backgroundColor = "black"; */
+        setTagSelected(e.target.attributes.value.value);
     };
 
     const Champs = () => {
@@ -105,12 +101,11 @@ const Champions = () => {
                     ))}
                 </div>
                 {champsFilter.map((champion) => (
-                    <Link to={`/champion/${champion.name.toLowerCase()}`}>
-                        <div
-                            className="champ-box"
-                            key={champion.name}
-                            onClick={handleClick}
-                        >
+                    <Link
+                        key={champion.name}
+                        to={`/champion/${champion.name.toLowerCase()}`}
+                    >
+                        <div className="champ-box" onClick={handleClick}>
                             <img
                                 /*  src={`https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${champion.image.full}`} */
                                 src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${

@@ -28,7 +28,12 @@
 .leaders-board {
     padding: 10vh 10vw;
 }
-
+.leaderboards-title {
+    background-color: blueviolet;
+    padding: 0.5rem;
+    margin-bottom: 5px;
+    border-radius: 5px 5px 0px 0px;
+}
 .leaders-box {
     display: flex;
     flex-wrap: wrap;

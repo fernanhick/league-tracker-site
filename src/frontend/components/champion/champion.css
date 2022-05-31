@@ -1,18 +1,52 @@
+.champ-section {
+    min-height: 80vh;
+}
 .champion-section {
-    min-height: 70vh;
-    padding: 3vh 10vw;
+    max-width: 700px;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 1rem;
+    margin: 3vh 10vw;
     gap: 2rem;
     display: flex;
     flex-wrap: wrap;
+
+    background-color: black;
+    justify-content: space-between;
 }
 .champion-description {
-    max-width: 300px;
-
+    background-color: black;
+    color: white;
     text-align: left;
     display: flex;
-    flex-wrap: wrap;
     gap: 1rem;
 }
 .champion-title {
     width: 100%;
+    background-color: blueviolet;
+    color: white;
+}
+.champion-title-desc {
+    background-color: rgb(92, 41, 139);
+}
+.champion-desc-blurb {
+    padding: 1rem 0.8rem 1rem 0.3rem;
+    /*     max-width: 200px;
+ */
+    align-items: center;
+    height: 100%;
+}
+@media screen and (max-width: 800px) {
+    .champion-description > img {
+        width: 8rem;
+    }
+    .champion-section h1 {
+        font-size: 1.1rem;
+    }
+    .champion-section h2 {
+        font-size: 0.9rem;
+    }
+    .champion-section {
+        font-size: 0.8rem;
+    }
 }

@@ -23,7 +23,7 @@ export default function Champion() {
                 <>
                     {champsArray.map((champ) =>
                         champ.name.toLowerCase() === params.id ? (
-                            <>
+                            <div className="champ-section">
                                 <div className="champion-section">
                                     <div className="champion-title">
                                         <h1 className="champion-title-header">
@@ -55,7 +55,7 @@ export default function Champion() {
                                         </div>
                                     </div>
                                 </div>
-                            </>
+                            </div>
                         ) : (
                             <></>
                         )

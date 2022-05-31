@@ -17,3 +17,10 @@
 #responsive-navbar-nav {
     align-items: flex-end;
 }
+
+@media screen and (max-width: 800px) {
+    .me-auto > a {
+        font-size: 0.8rem;
+        padding: 0.3rem;
+    }
+}

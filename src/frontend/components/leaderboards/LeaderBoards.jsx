@@ -49,7 +49,9 @@ const LeaderBoards = () => {
     let la2 = 1;
     return (
         <div className="leaders-board">
-            <h1>Leaderboards</h1>
+            <div className="leaderboards-title">
+                <h1>Leaderboards</h1>
+            </div>
             {loading ? (
                 <></>
             ) : (

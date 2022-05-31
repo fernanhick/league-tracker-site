@@ -6,7 +6,6 @@ export const main = async () => {
     const { data } = await axios.get(urlSting).catch((err) => {
         console.log(err);
     });
-    console.log(data);
     const result = Object.entries(data.data).reduce((state, [key, value]) => {
         return [
             ...state,
