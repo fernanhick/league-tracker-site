@@ -1,0 +1,18 @@
+.champion-section {
+    min-height: 70vh;
+    padding: 3vh 10vw;
+    gap: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+.champion-description {
+    max-width: 300px;
+
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.champion-title {
+    width: 100%;
+}

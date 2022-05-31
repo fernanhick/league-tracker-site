@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import("./champions.css");
 
 const Champions = () => {
@@ -104,35 +105,39 @@ const Champions = () => {
                     ))}
                 </div>
                 {champsFilter.map((champion) => (
-                    <div
-                        className="champ-box"
-                        key={champion.name}
-                        onClick={handleClick}
-                    >
-                        <img
-                            /*  src={`https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${champion.image.full}`} */
-                            src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${
-                                champion.name === "Nunu & Willump"
-                                    ? "Nunu"
-                                    : champion.name.charAt(0).toUpperCase() +
-                                      champion.name
-                                          .slice(1)
-                                          .toLowerCase()
-                                          .replace(/[^\w]/g, "")
-                                          .replace(/\s/g, "")
-                            }_0.jpg`}
-                            alt=""
-                        />
+                    <Link to={`/champion/${champion.name.toLowerCase()}`}>
+                        <div
+                            className="champ-box"
+                            key={champion.name}
+                            onClick={handleClick}
+                        >
+                            <img
+                                /*  src={`https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${champion.image.full}`} */
+                                src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${
+                                    champion.name === "Nunu & Willump"
+                                        ? "Nunu"
+                                        : champion.name
+                                              .charAt(0)
+                                              .toUpperCase() +
+                                          champion.name
+                                              .slice(1)
+                                              .toLowerCase()
+                                              .replace(/[^\w]/g, "")
+                                              .replace(/\s/g, "")
+                                }_0.jpg`}
+                                alt=""
+                            />
 
-                        <div ref={boxRef} className={`champ-details `}>
-                            <div className="champ-name">
-                                <h1>{champion.name}</h1>
-                            </div>
-                            {/*   {champion.tags.map((tag) => (
+                            <div ref={boxRef} className={`champ-details `}>
+                                <div className="champ-name">
+                                    <h1>{champion.name}</h1>
+                                </div>
+                                {/*   {champion.tags.map((tag) => (
                                 <span key={tag}> {tag} </span>
                             ))} */}
+                            </div>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
         );

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { main } from "../champions/ch";
 import { getRotation } from "./RotationController";
 import("./rotation.css");
@@ -48,13 +49,15 @@ export const Rotation = () => {
                         <h1>Free Campions Rotation </h1>
                     </div>
                     {champsRotation.map((champ) => (
-                        <div className="champ" key={champ.key}>
-                            <img
-                                src={`https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${champ.image}`}
-                                alt=""
-                            />
-                            <div className="champs-name"> {champ.name}</div>
-                        </div>
+                        <Link to={`/champion/${champ.name.toLowerCase()}`}>
+                            <div className="champ" key={champ.key}>
+                                <img
+                                    src={`https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${champ.image}`}
+                                    alt=""
+                                />
+                                <div className="champs-name"> {champ.name}</div>
+                            </div>
+                        </Link>
                     ))}
                 </>
             ) : (
